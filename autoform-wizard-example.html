@@ -11,15 +11,21 @@
 </template>
 
 <template name="order">
-  {{> wizard id="order" route="order" steps=steps stepsTemplate="steps" buttonClasses="ui submit button" clearOnDestroy=true}}
+  <div class="ui grid">
+    {{> wizard id="order" route="order" steps=steps stepsTemplate="steps" buttonClasses="ui submit button" clearOnDestroy=true}}
+  </div>
 </template>
 
 <template name="contactInformation">
-  {{> quickForm id="contact-information-form" doc=this.step.data schema=Schema.contactInformation}}
+  <div class="column">
+    {{> quickForm id="contact-information-form" doc=this.step.data schema=Schema.contactInformation}}
+  </div>
 </template>
 
 <template name="paymentInformation">
-  {{> quickForm id="payment-information-form" doc=this.step.data schema=Schema.paymentInformation}}
+  <div class="column">
+    {{> quickForm id="payment-information-form" doc=this.step.data schema=Schema.paymentInformation}}
+  </div>
 </template>
 
 <template name="viewOrder">
@@ -29,7 +35,8 @@
 </template>
 
 <template name="steps">
-  <div class="ui two steps">
+  <div class="column">
+  <div class="ui vertical steps">
   {{#each wizard.steps}}
     <div class="{{stepClass id}} step">
       {{#if icon}}<i class="info icon"></i>{{/if}}
@@ -42,5 +49,6 @@
       </div>
     </div>
   {{/each}}
+  </div>
   </div>
 </template>
